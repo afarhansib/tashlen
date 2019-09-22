@@ -1,4 +1,4 @@
-/*fonts*/
+/*_fonts_*/
 @font-face {
   font-family: 'OverpassMono-Regular';
   src: url('../fonts/OverpassMono-Regular/OverpassMono-Regular.eot?#iefix') format('embedded-opentype'),
@@ -17,10 +17,41 @@
   font-weight: normal;
   font-style: normal;
 }
-/*style*/
+/*_variables_*/
+:root {
+  --warna1: #000;
+  --warna2: #fff;
+  --warna3: #063;
+}
+/*_bad reset_*/
+* {
+  margin: 0;
+  padding: 0;
+}
+/*_style on mobile_*/
 body {
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: none;
   -webkit-user-select: none;
   font-family: OverpassMono-Regular, monospace;
+}
+/*base*/
+.wrap {
+  background-color: var(--warna3);
+  max-width: 540px;
+  height: 100vh;
+  line-height: 100vh;
+  text-align: center;
+  color: white;
+}
+/*_style on tablet/desktop_*/
+@media only screen and (min-width: 540px) {
+  /*base*/
+  .wrap {
+    border-radius: 32px;
+    margin: auto;
+    height: 960px;
+    margin-top: calc((100vh - 960px) / 2);
+    line-height: 960px;
+  }
 }
