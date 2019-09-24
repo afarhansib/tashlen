@@ -10,10 +10,60 @@
 	<script src="http://192.168.1.200:35729/livereload.js?snipver=1"></script>
 </head>
 <body>
-	<div class="wrap">
-		<h1>Hai Dunia!</h1>
-	</div>
 
+	<div class="wrap">
+
+	<!-- card top : header -->
+		<div class="card header">
+			<div class="header__menu">
+				<button class="menu-btn" onclick="alert('hi there!')"></button>
+			</div>
+			<div class="header__title">
+				<span class="title">Tashlen</span>
+			</div>
+		</div>
+	<!-- end card top : header -->
+
+	<!-- card middle : navbar -->
+		<div class="card navbar">
+			<button class="navbar-btn" data-active="false" data-goto="page-1">WIRID</button>
+			<button class="navbar-btn" data-active="true" data-goto="page-2">TASBIH</button>
+			<button class="navbar-btn" data-active="false" data-goto="page-3">DOA</button>
+		</div>
+	<!-- end card middle : navbar -->
+
+	<!-- card bottom : content -->
+		<div class="card page-1" data-visible="false">
+			<div class="page__title">
+				<div class="title">Wirid</div>
+			</div>
+			<div class="page__content">
+				<p>data</p>
+			</div>
+		</div>
+		<div class="card page-2" data-visible="true">
+			<div class="page__title">
+				<div class="title">Tasbih</div>
+			</div>
+			<div class="page__content">
+				<p>data</p>
+				<p>data</p>
+				<p>data</p>
+				<p>data</p>
+			</div>
+		</div>
+		<div class="card page-3" data-visible="false">
+			<div class="page__title">
+				<div class="title">Doa</div>
+			</div>
+			<div class="page__content">
+				<p>data</p>
+			</div>
+		</div>
+	<!-- end card bottom : content -->
+
+	</div>
+ 
 	<script src="assets/js/main.js"></script>
 </body>
 </html>
