@@ -8,15 +8,6 @@
   font-weight: normal;
   font-style: normal;
 }
-/*@font-face {
-  font-family: 'OverpassMono-Bold';
-  src: url('../fonts/OverpassMono-Bold/OverpassMono-Bold.eot?#iefix') format('embedded-opentype'),
-  		 url('../fonts/OverpassMono-Bold/OverpassMono-Bold.woff') format('woff'),
-  		 url('../fonts/OverpassMono-Bold/OverpassMono-Bold.ttf')  format('truetype'),
-  		 url('../fonts/OverpassMono-Bold/OverpassMono-Bold.svg#OverpassMono-Bold') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}*/
 /*_variables_*/
 :root {
   --warna1: #000;
@@ -37,14 +28,48 @@ body {
   -webkit-text-size-adjust: none;
   -webkit-user-select: none;
 }
+
+/*global*/
+[data-visible="false"] {
+    display: none;
+}
+
+/*overlay*/
+[class*="overlay"] {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 3;
+    top: 0;
+}
+center {
+    position: absolute;
+    top: 50%;
+    width: 100vw;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    
+}
+
 /*base*/
-.wrap {
+[class*="wrap-"] {
   background-color: var(--warna3);
   padding: 15px;
-  /*height: 90vh;*/
-  /*line-height: 100vh;*/
-  /*text-align: center;*/
-  /*color: white;*/
+    box-sizing: border-box;
+}
+.wrap-top {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+    padding-bottom: 8px;
+}
+.wrap-bottom {
+    margin-top: 243px;
+    padding-top: 0px;
 }
 .card {
   background-color: var(--warna2);
@@ -56,16 +81,16 @@ body {
   box-sizing: border-box;
 }
 
+
+
 /*haeder*/
 .header {
   height: 50px;
 }
-
 .header__menu {
   position: absolute;
   z-index: 2;
 }
-
 .header__menu button {
   width: 40px;
   height: 40px;
@@ -75,22 +100,21 @@ body {
   background-position: 7px center;
   background-size: 70%;
   background-repeat: no-repeat;
-  /*background-color: red;*/
 }
-
 .header__title {
   position: absolute;
   width: 100%;
   text-align: center;
   line-height: 50px;
 }
-
 .header__title .title {
   font-weight: bold;
   font-size: 1.5em;
   vertical-align: sub;
 }
 /*end header*/
+
+
 
 /*navbar*/
 .navbar {
@@ -125,17 +149,38 @@ body {
 }
 /*end navbar*/
 
-/*content*/
-[class*="page-"] {
-  margin-bottom: 7px;
-  height: calc(100vh - 253px);
-}
-[class*="page"][data-visible="false"] {
-  display: none;
+
+
+/*content-head*/
+.page-head {
+    margin-bottom: -7px;
+    border-radius: 7px 7px 0px 0px;
 }
 .page__title {
   height: 50px;
   position: relative;
+  padding-bottom: 10px;
+}
+.page__title::after {
+    content: "";
+    width: 100%;
+    height: 12px;
+    background-color: var(--warna3);
+    background: -webkit-linear-gradient();
+    background: -o-linear-gradient();
+    background: linear-gradient(0deg, transparent, white);
+    position: absolute;
+    box-sizing: border-box;
+    bottom: -20px;
+}
+.page__title::before {
+    content: "";
+    width: 100%;
+    height: 8px;
+    background-color: var(--warna2);
+    position: absolute;box-sizing: border-box;
+    box-sizing: border-box;
+    bottom: -8px;
 }
 .page__title .title {
   position: absolute;
@@ -149,12 +194,31 @@ body {
   left: 15px;
   padding-bottom: 10px;
 }
+/*end content-head*/
+
+
+
+/*content-body*/
+[class*="page-"]:not(.page-head) {
+    border-radius: 0px 0px 7px 7px;
+}
+[class*="page-"]:not(.page-head)::before {
+    content: "";
+    width: 8px;
+    height: 10px;
+    background-color: var(--warna1);
+    position: absolute;
+    left: -8px;
+}
+[class*="page-"] {
+    margin-bottom: 0px;
+}
 .page__content {
   height: calc(100% - 85px);
-  padding: 0px 15px;
+  padding: 10px 15px 15px 15px;
   box-sizing: border-box;
   overflow: auto;
-  margin: 19px 0px 15px 0px;
+  margin-bottom: 7px;
 }
 /*temp*/
 .page__content p {
@@ -170,17 +234,20 @@ body {
  margin-bottom: 15px;
 }
 
-/*end content*/
+/*end content-body*/
+
+
 
 /*_style on tablet/desktop_*/
 @media only screen and (min-width: 540px) {
   /*base*/
   .wrap {
-    max-width: 360px;
+    width: 360px;
     border-radius: 20px;
-    /*margin: auto;*/
-    /*height: 640px;*/
-    /*margin-top: calc((100vh - 640px) / 2);*/
-    /*line-height: 640px;*/
+    margin: auto;
+      position: relative;
   }
+    .wrap-top {
+        width: inherit;
+    }
 }

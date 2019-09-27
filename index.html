@@ -11,7 +11,20 @@
 </head>
 <body>
 
-	<div class="wrap">
+   
+    <!--overlay-->
+    <div class="overlay-rotate-screen" data-visible="false">
+       <center>   
+        <h1>Tolong putar perangkat anda.</h1>
+        <p>Aplikasi ini hanya bisa dibuka dengan layar portrait / berdiri.</p>
+       </center>
+    </div>
+    <!--end overlay-->
+    
+    
+    <div class="wrap">
+	<div class="wrap-top">
+
 
 	<!-- card top : header -->
 		<div class="card header">
@@ -32,19 +45,26 @@
 		</div>
 	<!-- end card middle : navbar -->
 
-	<!-- card bottom : content -->
-		<div class="card page-1" data-visible="false">
+	<!-- card bottom-head : content-head -->
+		<div class="card page-head">
 			<div class="page__title">
 				<div class="title">Wirid</div>
 			</div>
+		</div>
+    <!-- end card bottom-head : content-head -->
+    
+    
+    </div>
+    <div class="wrap-bottom">
+        
+    
+    <!-- card bottom-body : content-body  -->
+        <div class="card page-1" data-visible="false">
 			<div class="page__content">
 				<p>data</p>
 			</div>
 		</div>
 		<div class="card page-2" data-visible="true">
-			<div class="page__title">
-				<div class="title">Tasbih</div>
-			</div>
 			<div class="page__content">
 				<p>data</p>
 				<p>data</p>
@@ -53,16 +73,16 @@
 			</div>
 		</div>
 		<div class="card page-3" data-visible="false">
-			<div class="page__title">
-				<div class="title">Doa</div>
-			</div>
 			<div class="page__content">
 				<p>data</p>
 			</div>
 		</div>
-	<!-- end card bottom : content -->
-
-	</div>
+	<!-- end card bottom-body : content-body -->
+   
+   
+    </div>
+    </div>
+    
  
 	<script src="assets/js/main.js"></script>
 </body>
