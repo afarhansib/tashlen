@@ -7,13 +7,13 @@
 	<meta name="msapplication-tap-highlight" content="no">
 	<link rel="icon" type="image/png" href="assets/img/icon.ico">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<script src="http://192.168.1.200:35729/livereload.js?snipver=1"></script>
+	<!-- <script src="http://192.168.1.200:35729/livereload.js?snipver=1"></script> -->
 </head>
 <body>
 
    
     <!--overlay-->
-    <div class="overlay-rotate-screen" data-visible="false">
+    <div class="overlay-rotate-screen zx-p-fixed" data-visible="false">
        <center>   
         <h1>Tolong putar perangkat anda.</h1>
         <p>Aplikasi ini hanya bisa dibuka dengan layar portrait / berdiri.</p>
@@ -23,64 +23,145 @@
     
     
     <div class="wrap">
-	<div class="wrap-top">
+			<div class="overlay-sidebar zx-p-fixed" data-visible="false">
+				<div class="menu">
+					<ul>
+						<li><button class="sb-button" data-active="true">Home</button></li>
+						<li><button class="sb-button" data-active="false">Doa</button></li>
+						<li><button class="sb-button" data-active="false">Profil</button></li>
+						<li><button class="sb-button" data-active="false">Pengaturan</button></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					<p>made with <3 by <a href="https://afarhansib.github.io/">afarhansib</a></p>
+				</div>
+			</div>
+	    <div class="overlay-block zx-p-fixed" data-visible="false"></div>
+			<div class="wrap-top zx-p-fixed">
 
 
-	<!-- card top : header -->
-		<div class="card header">
-			<div class="header__menu">
-				<button class="menu-btn" onclick="alert('hi there!')"></button>
-			</div>
-			<div class="header__title">
-				<span class="title">Tashlen</span>
-			</div>
-		</div>
-	<!-- end card top : header -->
+			<!-- card top : header -->
+				<div class="card header">
+					<div class="header__menu">
+						<button class="menu-btn"></button>
+					</div>
+					<div class="header__title">
+						<button class="title">Tashlen</button>
+					</div>
+					<div class="header__fs">
+						<button class="fs-btn"></button>
+					</div>
+				</div>
+			<!-- end card top : header -->
 
-	<!-- card middle : navbar -->
-		<div class="card navbar">
-			<button class="navbar-btn" data-active="false" data-goto="page-1">WIRID</button>
-			<button class="navbar-btn" data-active="true" data-goto="page-2">TASBIH</button>
-			<button class="navbar-btn" data-active="false" data-goto="page-3">DOA</button>
-		</div>
-	<!-- end card middle : navbar -->
+			<!-- card middle : navbar -->
+				<div class="card navbar">
+					<button class="navbar-btn" data-active="false" data-goto="page-1">Wirid</button>
+					<button class="navbar-btn" data-active="true" data-goto="page-2">Tasbih</button>
+					<button class="navbar-btn" data-active="false" data-goto="page-3">Doa</button>
+				</div>
+			<!-- end card middle : navbar -->
 
-	<!-- card bottom-head : content-head -->
-		<div class="card page-head">
-			<div class="page__title">
-				<div class="title">Wirid</div>
-			</div>
-		</div>
-    <!-- end card bottom-head : content-head -->
-    
-    
-    </div>
-    <div class="wrap-bottom">
-        
-    
-    <!-- card bottom-body : content-body  -->
-        <div class="card page-1" data-visible="false">
-			<div class="page__content">
-				<p>data</p>
-			</div>
-		</div>
-		<div class="card page-2" data-visible="true">
-			<div class="page__content">
-				<p>data</p>
-				<p>data</p>
-				<p>data</p>
-				<p>data</p>
-			</div>
-		</div>
-		<div class="card page-3" data-visible="false">
-			<div class="page__content">
-				<p>data</p>
-			</div>
-		</div>
-	<!-- end card bottom-body : content-body -->
-   
-   
-    </div>
+			<!-- card bottom-head : content-head -->
+				<div class="card page-head">
+					<div class="page__title">
+						<div class="title">Tasbih</div>
+					</div>
+				</div>
+		    <!-- end card bottom-head : content-head -->
+		    
+		    
+	    </div>
+	    <div class="wrap-bottom">
+		        
+		    
+		    <!-- card bottom-body : content-body  -->
+		    <div class="card page-1" data-visible="false">
+					<div class="page__content">
+						<p>
+							<x>
+								3x
+							</x>
+							<ar>
+							أَسْتَغْفِرُ اللهَ العَظِيْمَ اَلَّذِي لآ إِلَهَ إِلَّا هُوَ اْلحَيُّ اْلقَيُّوْمُ وَأَتُوْبُ إِلَيْهِ  
+							</ar>
+						</p>
+						<p>
+							<x>
+								1x
+							</x>
+							<ar>
+								لاَ إِلَهَ إِلَّا اللهُ وَحْدَهُ لاَ شَرِيْكَ لَهُ، لَهُ اْلمُلْكُ وَلَهُ اْلحَمْدُ يُحْيِي وَيُمِيْتُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيْرٌ
+							</ar>
+						</p>
+						<p>
+							<x>
+								1x
+							</x>
+							<ar>
+								اَللَّهُمَّ أَنْتَ السَّلاَمُ وَمِنْكَ السَّلاَمُ وَإِلَيْكَ يَعُوْدُ السَّلاَمُ، فَحَيِّنَا رَبَّنَا بِالسَّلاَمُ وَأَدْخِلْنَا اْلجَنَّةَ دَارَ السَّلاَمِ تَبَارَكْتَ رَبَّنَا وَتَعَالَيْتَ يَا ذَاالْجَلاَلِ وَاْلإِكْرَامِ
+							</ar>
+						</p>
+						<p>
+							<x>
+								1x
+							</x>
+							<ar>
+								أَعُوْذُ بِاللهِ مِنَ الشَّيْطَانِ الرَّجِيْمِ
+							</ar>
+						</p>
+						<p>
+							<x>
+								99x
+							</x>
+							<ar>
+								بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ
+							</ar>
+						</p>
+						<p>
+							<x>
+								1x
+							</x>
+							<ar>
+								الْحَمْدُ ِللهِ رَبِّ اْلعَالَمِيْنَ. الرَّحْمَنِ الرَّحِيْمِ. مَالِكِ يَوْمِ الدِّيْنِ. إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِيْنُ. اهْدِنَا الصِّرَاطَ اْلمُسْتَقِيْمَ. صِرَاطَ الَّذِيْنَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ اْلمَغْضُوْبِ عَلَيْهِمْ وَلاَ الضَآلِّيْنَ. آمِيْنَ
+							</ar>
+						</p>
+					</div>
+				</div>
+				<div class="card page-2" data-visible="true">
+					<div class="page__content">
+						<div class="tl-l-top">
+							<button class="tl-btn tbtn1" data-active="true">33</button>
+							<span>></span>
+							<button class="tl-btn tbtn2" data-active="false">33</button>
+							<span>></span>
+							<button class="tl-btn tbtn3" data-active="false">33</button>
+							<span>></span>
+							<button class="tl-btn tbtn4" data-active="false">99</button>
+						</div>
+						<div class="tl-l-mid">
+							<div class="tl-divider"></div>
+							<button class="tl-btn-h1">C</button>
+							<button class="tl-btn-h2">-</button>
+						</div>
+						<div class="tl-l-bot">
+							<div class="tl-num">0</div>
+							<button class="tl-big-btn" data-pressed="false"></button>
+						</div>
+					</div>
+				</div>
+				<div class="card page-3" data-visible="false">
+					<div class="page__content">
+						<p>Fatihah</p>
+						<p>data 3</p>
+						<p>data 3</p>
+						<p>data 3</p>
+					</div>
+				</div>
+			<!-- end card bottom-body : content-body -->
+		   
+	   
+	    </div>
     </div>
     
  
