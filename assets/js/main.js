@@ -4,6 +4,19 @@ console.log('%c visit me on https://afarhansib.github.io/', 'font-weight: bold; 
 
 
 
+// service worker
+if ("serviceWorker" in navigator) {
+	navigator.serviceWorker
+		.register("sw.js")
+		.then(function() {
+		})
+		.catch(function(err) {
+		});
+} else {
+}
+
+
+
 // variables
 const ovlRotScr = document.querySelector(".overlay-rotate-screen")
 const navBtn = document.querySelectorAll(".navbar-btn")

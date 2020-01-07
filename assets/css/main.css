@@ -1,19 +1,13 @@
  /*_fonts_*/
 @font-face {
   font-family: 'OverpassMono-Regular';
-  src: url('../fonts/OverpassMono-Regular/OverpassMono-Regular.eot?#iefix') format('embedded-opentype'),
-   		 url('../fonts/OverpassMono-Regular/OverpassMono-Regular.woff') format('woff'),
-   		 url('../fonts/OverpassMono-Regular/OverpassMono-Regular.ttf')  format('truetype'),
-   		 url('../fonts/OverpassMono-Regular/OverpassMono-Regular.svg#OverpassMono-Regular') format('svg');
+  src: url('../fonts/OverpassMono-Regular.ttf')  format('truetype')
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: LPMQ;
-  src: url(../fonts/LPMQ/LPMQ.eot);
-  src: url(../fonts/LPMQ/LPMQ.eot?#iefix) format('embedded-opentype'),
-       url(../fonts/LPMQ/LPMQ.woff) format('woff'),
-       url(../fonts/LPMQ/LPMQ.ttf) format('truetype');
+  src: url(../fonts/LPMQ.ttf) format('truetype');
   font-weight: 400;
   font-style: normal
 }

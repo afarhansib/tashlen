@@ -1,0 +1,21 @@
+{
+	"name": "Tashlen - Tasbih Online",
+	"short_name": "Tashlen",
+	"description": "Aplikasi untuk Wirid ketika tidak ada Tasbih.",
+	"start_url": "index.html",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#006633",
+	"icons": [
+		{
+			"src": "assets/img/icon_192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "assets/img/icon_512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	]
+}
