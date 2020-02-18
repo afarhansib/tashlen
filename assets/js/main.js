@@ -23,7 +23,10 @@ const navBtn = document.querySelectorAll(".navbar-btn")
 const menuBtn = document.querySelector(".menu-btn")
 const fsBtn = document.querySelector(".fs-btn")
 const ovlBlock = document.querySelectorAll(".overlay-block")[0]
+const ovlSidebar = document.querySelector("[class*='sidebar']")
+const ovlPages = document.querySelector(".overlay-pages")
 const ovl = document.querySelectorAll("[class*='overlay']")
+const sbBtn = document.querySelectorAll(".sb-button")
 
 
 
@@ -71,6 +74,7 @@ function GoOutFullscreen()
 
 fsBtn.addEventListener("click", function()
 {
+	window.navigator.vibrate(30)
 	if (!fsState)
 	{
 		fsState = true;
@@ -89,7 +93,7 @@ navBtn.forEach(function(el)
 {
 	el.addEventListener("click", function()
 	{
-
+		window.navigator.vibrate(30)
 		// nonaktifkan semua navBtn
 		navBtn.forEach(function(el)
 		{
@@ -113,6 +117,29 @@ navBtn.forEach(function(el)
 	})
 })
 
+// navigasi dari sidebar
+sbBtn.forEach(function(el) {
+	el.addEventListener("click", function(e) {
+		window.navigator.vibrate(30)
+		// console.log(e)
+		sbBtn.forEach(function(el) {
+			el.setAttribute("data-active", "false")
+		})
+		el.setAttribute("data-active", "true")
+			// console.log(e.target.innerText)
+
+		if (e.target.innerText === "Home") {
+			ovlPages.setAttribute("data-visible", "false")
+		} else {
+			// console.log(e.target.innerText)
+			document.querySelector(".overlay-pages .card .title").innerText = e.target.innerText
+			ovlPages.setAttribute("data-visible", "true")
+		}
+		ovlBlock.setAttribute("data-visible", "false")
+		ovlSidebar.setAttribute("data-visible", "false")
+	})
+})
+
 document.querySelector(".wrap").addEventListener("scroll", function(e)
 {
 	e.preventDefault()
@@ -121,17 +148,20 @@ document.querySelector(".wrap").addEventListener("scroll", function(e)
 // buka sidebar
 menuBtn.addEventListener("click", function()
 {
-	document.querySelector("[class*='sidebar']").setAttribute("data-visible", "true")
+	window.navigator.vibrate(30)
+	ovlSidebar.setAttribute("data-visible", "true")
 	ovlBlock.setAttribute("data-visible", "true")
 })
 
 // tutup sidebar
 ovlBlock.addEventListener("click", function()
 {
-	ovl.forEach(function(el)
-	{
-		el.setAttribute("data-visible", "false")
-	})
+	ovlBlock.setAttribute("data-visible", "false")
+	ovlSidebar.setAttribute("data-visible", "false")
+	// ovl.forEach(function(el)
+	// {
+	// 	el.setAttribute("data-visible", "false")
+	// })
 })
 
 
@@ -150,7 +180,7 @@ function toKapital(str)
 */
 const tombol = document.querySelector(".tl-big-btn")
 const nomor = document.querySelector(".tl-num")
-let urutanArray = [7, 7, 7, 13]
+let urutanArray = [33, 7, 7, 13]
 let jumlahWirid = urutanArray[0]
 let urutanSekarang = 1
 
@@ -168,6 +198,7 @@ function gantiJumlah(array)
 
 tombol.addEventListener("mousedown", function()
 {
+	window.navigator.vibrate(50)
 	let angkaSekarang = Number(nomor.innerText)
 
 	nomor.innerText = angkaSekarang + 1

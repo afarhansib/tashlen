@@ -1,21 +1,21 @@
-const CACHE_NAME = "tashlen-v0.1";
+const CACHE_NAME = "tashlen-v0.2";
 const CACHE_URLS = [
-	"assets/css/main.css",
+	// "assets/css/main.css",
 
 	"assets/fonts/LPMQ.ttf",
 	"assets/fonts/OverpassMono-Regular.ttf",
 
-	"assets/img/fs-in.svg",
-	"assets/img/fs-out.svg",
-	"assets/img/icon.ico",
-	"assets/img/icon_192.png",
-	"assets/img/icon_512.png",
-	"assets/img/menu.svg",
+	// "assets/img/fs-in.svg",
+	// "assets/img/fs-out.svg",
+	// "assets/img/icon.ico",
+	// "assets/img/icon_192.png",
+	// "assets/img/icon_512.png",
+	// "assets/img/menu.svg",
 
-	"assets/js/main.js",
+	// "assets/js/main.js",
 
-	"index.html",
-	"manifest.json",
+	// "index.html",
+	// "manifest.json",
 ]
 
 self.addEventListener("install", (event) => {

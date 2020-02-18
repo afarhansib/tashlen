@@ -21,6 +21,7 @@
 }
 /*_bad reset_*/
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: OverpassMono-Regular, monospace;
@@ -42,7 +43,7 @@ body {
 
 /*global*/
 [data-visible="false"] {
-    display: none;
+  display: none;
 }
 
 /*overlay*/
@@ -50,12 +51,20 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: white;
-  z-index: 3;
   top: 0;
+}
+.overlay-rotate-screen {
+  z-index: 16;
+  background-color: var(--warna3);
+}
+.overlay-rotate-screen center {
+  z-index: 17;
+  background-color: var(--warna2);
 }
 .overlay-block {
   width: 100%;
   background-color: rgba(0, 0, 0, .5);
+  z-index: 4;
 }
 center {
   position: absolute;
@@ -93,9 +102,12 @@ center {
   font-weight: bold;
   font-size: 1.25em;
   color: #666;
+  text-decoration: none;
   width: calc(100% - 30px);
   text-align: left;
   padding-left: 30px;
+  display: inline-block;
+  box-sizing: border-box;
   margin-bottom: 11px;
   border: none;
   border-radius: 0px 10px 10px 0px;
@@ -144,7 +156,7 @@ center {
   padding-bottom: 8px;
 }
 .wrap-bottom {
-  margin-top: 243px;
+  margin-top: 233px;
   padding-top: 0px;
 }
 .card {
@@ -205,7 +217,7 @@ center {
   padding: 5px;
 }
 .header__title .title {
-  line-height: 40px;
+  /*line-height: 40px;*/
   font-weight: bold;
   font-size: 1.5em;
   height: 40px;
@@ -233,7 +245,7 @@ center {
   float: left;
   border-radius: 5px;
   margin-top: calc((70px - 35px) / 2 - 15px);
-  line-height: 28px;
+  /*line-height: 28px;*/
   color: var(--warna-text-btn);
   background-color: var(--warna-bg-btn);
   text-transform: uppercase;
@@ -245,7 +257,7 @@ center {
 .navbar-btn[data-active="true"] {
   margin-top: calc((70px - 40px) / 2 - 15px);
   color: var(--warna2);
-  line-height: 32px;
+  /*line-height: 32px;*/
   font-size: 1.2em;
   height: 40px;
   background-color: var(--warna3);
@@ -451,6 +463,56 @@ border-radius: 100%;
     transform: translate(-8px, 8px);
   }
 
+/* overlay Pages */
+.overlay-pages {
+  height: calc(100vh - 85px);
+  bottom: 0;
+  top: auto;
+  width: 100%;
+  background-color: var(--warna3);
+  z-index: 3;
+  padding: 0px 15px 15px 15px;
+  box-sizing: border-box;
+}
+
+.overlay-pages .card-title {
+  padding: 15px;
+}
+
+.overlay-pages .title {
+  /*position: absolute;*/
+  font-size: 1.4em;
+  box-sizing: border-box;
+  border-bottom: 4px solid var(--warna3);
+  font-weight: bold;
+  width: 160px;
+  height: 38px;
+  padding-bottom: 10px;
+}
+
+/* kumpulan doa */
+.list-doa {
+  list-style-type: none;
+  padding: 0 15px 15px;
+}
+
+.list-doa a {
+  display: block;
+  padding: 10px;
+  /*width: calc(100% - 20px);*/
+  border-radius: 5px;
+  text-decoration: none;
+  color: var(--warna1);
+  background-color: var(--warna-bg-btn);
+}
+
+.list-doa a:hover {
+  background-color: var(--warna-text-btn);
+}
+
+.list-doa li:not(:last-child) {
+  margin-bottom:10px;
+}
 
 
 /*_style on tablet/desktop_*/
@@ -497,5 +559,10 @@ border-radius: 100%;
     position: fixed;
     bottom: 0;
     z-index: 99;
+  }*/
+
+  /* overlay Pages */
+  /*.overlay-pages {
+    padding: 0px 15px 15px 15px;
   }*/
 }

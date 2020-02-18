@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="manifest" href="manifest.json">
 	<meta name="theme-color" content="#006633">
-	<!-- <script src="http://192.168.1.200:35729/livereload.js?snipver=1"></script> -->
+	<script src="http://192.168.1.200:35729/livereload.js?snipver=1"></script>
 </head>
 <body>
 
@@ -28,17 +28,31 @@
 			<div class="overlay-sidebar zx-p-fixed" data-visible="false">
 				<div class="menu">
 					<ul>
-						<li><button class="sb-button" data-active="true">Home</button></li>
-						<li><button class="sb-button" data-active="false">Doa</button></li>
-						<li><button class="sb-button" data-active="false">Profil</button></li>
-						<li><button class="sb-button" data-active="false">Pengaturan</button></li>
+						<li><a href="#home" class="sb-button" data-active="true">Home</a></li>
+						<li><a href="#kumpulan-doa" class="sb-button" data-active="false">Kumpulan Doa</a></li>
+						<!-- <li><a href="#profil" class="sb-button" data-active="false">Profil</a></li> -->
+						<li><a href="#pengaturan" class="sb-button" data-active="false">Pengaturan</a></li>
 					</ul>
 				</div>
 				<div class="copyright">
-					<p>made with <3 by <a href="https://afarhansib.github.io/">afarhansib</a></p>
+					<p>made with &hearts; by <a href="https://afarhansib.github.io/">afarhansib</a></p>
 				</div>
 			</div>
 	    <div class="overlay-block zx-p-fixed" data-visible="false"></div>
+	    <div class="overlay-pages zx-p-fixed" data-visible="false">
+	    	<div class="card">
+					<div class="card-title">
+						<div class="title"></div>
+					</div>
+					<div class="card-body">
+						<ul class="list-doa">
+							<li><a href="#doa-tahajud">Doa setelah Sholat Tahajud</a></li>
+							<li><a href="#doa-witir">Doa setelah Sholat Witir</a></li>
+							<li><a href="#doa-dhuha">Doa setelah Sholat Dhuha</a></li>
+						</ul>
+					</div>
+				</div>
+	    </div>
 			<div class="wrap-top zx-p-fixed">
 
 
