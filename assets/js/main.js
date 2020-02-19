@@ -28,6 +28,22 @@ const ovlPages = document.querySelector(".overlay-pages")
 const ovl = document.querySelectorAll("[class*='overlay']")
 const sbBtn = document.querySelectorAll(".sb-button")
 
+var l2KumpulanDoa = `
+<ul class="list-doa">
+							<li><a href="#l3-doa-tahajud">Doa setelah Sholat Tahajud</a></li>
+							<li><a href="#l3-doa-witir">Doa setelah Sholat Witir</a></li>
+							<li><a href="#l3-doa-dhuha">Doa setelah Sholat Dhuha</a></li>
+						</ul>
+`
+var l2Pengaturan = `
+<ul class="list-doa">
+							<li><a href="#l3-jumlah-wirid">Jumlah Wirid</a></li>
+							<li><a href="#l3-bacaan-wirid">Bacaan Wirid</a></li>
+							<li><a href="#l3-bacaan-doa">Bacaan Doa</a></li>
+							<li><a href="#l3-tema">Tema Warna</a></li>
+						</ul>
+`
+
 
 
 // lihat perubahan rotasi
@@ -128,12 +144,24 @@ sbBtn.forEach(function(el) {
 		el.setAttribute("data-active", "true")
 			// console.log(e.target.innerText)
 
+		switch(e.target.innerText) {
+			case "Home":
+				ovlPages.setAttribute("data-visible", "false")
+				break;
+			case "Kumpulan Doa":
+				document.querySelector(".overlay-pages .card .card-body").innerHTML = l2KumpulanDoa
+				document.querySelector(".overlay-pages .card .title").innerText = e.target.innerText
+				ovlPages.setAttribute("data-visible", "true")
+				break;
+			case "Pengaturan":
+				document.querySelector(".overlay-pages .card .card-body").innerHTML = l2Pengaturan
+				document.querySelector(".overlay-pages .card .title").innerText = e.target.innerText
+				ovlPages.setAttribute("data-visible", "true")
+				break;
+		}
 		if (e.target.innerText === "Home") {
-			ovlPages.setAttribute("data-visible", "false")
 		} else {
 			// console.log(e.target.innerText)
-			document.querySelector(".overlay-pages .card .title").innerText = e.target.innerText
-			ovlPages.setAttribute("data-visible", "true")
 		}
 		ovlBlock.setAttribute("data-visible", "false")
 		ovlSidebar.setAttribute("data-visible", "false")

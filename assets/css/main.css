@@ -17,6 +17,7 @@
   --warna2: #fff;
   --warna3: #063;
   --warna-bg-btn: #eee;
+  --warna-btn-hover: #e7e7e7;
   --warna-text-btn: #aaa;
 }
 /*_bad reset_*/
@@ -25,6 +26,7 @@
   margin: 0;
   padding: 0;
   font-family: OverpassMono-Regular, monospace;
+  transition: .4s;
 }
 button:focus {
   outline: none;
@@ -112,6 +114,9 @@ center {
   border: none;
   border-radius: 0px 10px 10px 0px;
   background-color: white;
+}
+.sb-button:hover {
+  background-color: var(--warna-btn-hover);
 }
 .sb-button[data-active="true"] {
   background-color: var(--warna3);
@@ -242,6 +247,8 @@ center {
   font-size: 1.1em;
   display: block;
   height: 35px;
+  text-align: center;
+  text-decoration: none;
   float: left;
   border-radius: 5px;
   margin-top: calc((70px - 35px) / 2 - 15px);
@@ -507,7 +514,7 @@ border-radius: 100%;
 }
 
 .list-doa a:hover {
-  background-color: var(--warna-text-btn);
+  background-color: var(--warna-btn-hover);
 }
 
 .list-doa li:not(:last-child) {
