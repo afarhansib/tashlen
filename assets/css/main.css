@@ -152,7 +152,7 @@ center {
 }
 .wrap {
   padding: 0;
-  height: calc(100vh - 243px);
+  height: calc(100vh - 233px);
 }
 .wrap-top {
   z-index: 2;
@@ -198,6 +198,7 @@ center {
   background-position: 7px center;
   background-size: 70%;
   background-repeat: no-repeat;
+  border-radius: 5px;
 }
 .header__fs button {
   width: 40px;
@@ -208,7 +209,12 @@ center {
   background-position: 2px center;
   background-size: 90%;
   background-repeat: no-repeat;
+  border-radius: 5px;
 }
+.header__fs button:hover, .header__menu button:hover {
+  background-color: var(--warna-btn-hover);
+  cursor: pointer;
+} 
 .fs-out {
   background: url(../img/fs-out.svg) !important;
   background-position: 2px center !important;
@@ -222,13 +228,31 @@ center {
   padding: 5px;
 }
 .header__title .title {
-  /*line-height: 40px;*/
+  line-height: 40px;
   font-weight: bold;
   font-size: 1.5em;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  width: 100px;
   height: 40px;
   box-sizing: border-box;
-  border: 1px solid white;
+  border: none;
   background-color: white;
+  color: var(--warna1);
+}
+.header__title .title span img {
+  height: 40px;
+}
+.header__title .title span {
+  position: absolute;
+  top: 0px;
+  display: block;
+  left: 0;
+}
+.tampil-logo {
+  top: -40px !important;
 }
 /*end header*/
 
@@ -268,6 +292,9 @@ center {
   font-size: 1.2em;
   height: 40px;
   background-color: var(--warna3);
+}
+.navbar-btn[data-active="false"]:hover {
+  background-color: var(--warna-btn-hover);
 }
 /*end navbar*/
 
@@ -483,44 +510,124 @@ border-radius: 100%;
 }
 
 .overlay-pages .card-title {
-  padding: 15px;
+  padding: 15px 15px 0px 15px;
+  position: relative;
 }
-
+.overlay-pages .card-title::after {
+  content: "";
+  width: 100%;
+  height: 10px;
+  background-color: var(--warna3);
+  background: -webkit-linear-gradient();
+  background: -o-linear-gradient();
+  background: linear-gradient(0deg, transparent, white);
+  position: absolute;
+  box-sizing: border-box;
+  bottom: -15px;
+  left: 0;
+}
+.overlay-pages .card-title::before {
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: var(--warna2);
+  position: absolute;
+  box-sizing: border-box;
+  bottom: -5px;
+}
+.overlay-pages .card-body::after {
+  content: "";
+  width: 100%;
+  height: 10px;
+  background-color: var(--warna3);
+  background: linear-gradient(180deg, transparent, white);
+  position: absolute;
+  box-sizing: border-box;
+  bottom: 5px;
+  left: 0;
+}
+.overlay-pages .card-body::before {
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: var(--warna2);
+  position: absolute;
+  box-sizing: border-box;
+  bottom: 0px;
+}
+.overlay-pages .card {
+  overflow: hidden;
+}
+.overlay-pages .card-body {
+  padding: 15px;
+  overflow: auto;
+  max-height: calc(100vh - 235px);
+}
 .overlay-pages .title {
   /*position: absolute;*/
   font-size: 1.4em;
   box-sizing: border-box;
   border-bottom: 4px solid var(--warna3);
   font-weight: bold;
-  width: 160px;
-  height: 38px;
-  padding-bottom: 10px;
+  /*width: 180px;*/
+  /*height: 38px;*/
+  padding-bottom: 7px;
+}
+.overlay-pages .card-title a span {
+  /* width: 30px; */
+  padding: 10px 15px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: var(--warna-bg-btn);
+}
+.overlay-pages .card-title a {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 10px 11px 10px 0px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.overlay-pages .card-title a:hover {
+  background-color: var(--warna-btn-hover);
 }
 
-/* kumpulan doa */
-.list-doa {
+
+.list {
   list-style-type: none;
-  padding: 0 15px 15px;
+  /*padding: 15px;*/
 }
 
-.list-doa a {
+.list a {
   display: block;
   padding: 10px;
+  position: relative;
   /*width: calc(100% - 20px);*/
-  border-radius: 5px;
+  border-radius: 10px;
   text-decoration: none;
   color: var(--warna1);
   background-color: var(--warna-bg-btn);
 }
 
-.list-doa a:hover {
+.list a span {
+  position: absolute;
+  right: 15px;
+}
+
+.list a:hover {
   background-color: var(--warna-btn-hover);
 }
 
-.list-doa li:not(:last-child) {
+.list li:not(:last-child) {
   margin-bottom:10px;
 }
-
+/* overlay pages content */
+.overlay-pages .card-body p {
+  padding: 15px;
+  background-color: var(--warna-bg-btn);
+  border-radius: 10px;
+}
 
 /*_style on tablet/desktop_*/
 @media only screen and (min-width: 540px) {

@@ -27,25 +27,39 @@ const ovlSidebar = document.querySelector("[class*='sidebar']")
 const ovlPages = document.querySelector(".overlay-pages")
 const ovl = document.querySelectorAll("[class*='overlay']")
 const sbBtn = document.querySelectorAll(".sb-button")
+const tempatLogo = document.querySelector(".header__title .title > span")
+let historyL2 = ""
 
-var l2KumpulanDoa = `
-<ul class="list-doa">
-							<li><a href="#l3-doa-tahajud">Doa setelah Sholat Tahajud</a></li>
-							<li><a href="#l3-doa-witir">Doa setelah Sholat Witir</a></li>
-							<li><a href="#l3-doa-dhuha">Doa setelah Sholat Dhuha</a></li>
+let l2KumpulanDoa = `
+<ul class="list">
+							<li><a href="#l3-doa_tahajud">Doa setelah Sholat Tahajud <span>></span></a></li>
+							<li><a href="#l3-doa_witir">Doa setelah Sholat Witir <span>></span></a></li>
+							<li><a href="#l3-doa_dhuha">Doa setelah Sholat Dhuha <span>></span></a></li>
 						</ul>
 `
-var l2Pengaturan = `
-<ul class="list-doa">
-							<li><a href="#l3-jumlah-wirid">Jumlah Wirid</a></li>
-							<li><a href="#l3-bacaan-wirid">Bacaan Wirid</a></li>
-							<li><a href="#l3-bacaan-doa">Bacaan Doa</a></li>
-							<li><a href="#l3-tema">Tema Warna</a></li>
+let l2Pengaturan = `
+<ul class="list">
+							<li><a href="#l3-jumlah_tasbih">Jumlah Tasbih <span>></span></a></li>
+							<li><a href="#l3-bacaan_wirid">Bacaan Wirid <span>></span></a></li>
+							<li><a href="#l3-bacaan_doa">Bacaan Doa <span>></span></a></li>
+							<li><a href="#l3-tema">Tema Warna <span>></span></a></li>
 						</ul>
 `
+let isiL3 = {
+	"doa_tahajud" : ["Doa Setelah Sholat Tahajud", `<p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p>`],
+	"doa_witir" : ["Doa Setelah Sholat Witir", `<p>Belum ada data.</p>`],
+	"doa_dhuha" : ["Doa Setelah Sholat Dhuha", `<p>Belum ada data.</p>`],
+	"jumlah_tasbih" : ["Jumlah Tasbih", `<p>Belum ada data.</p>`],
+	"bacaan_wirid" : ["Bacaan Wirid", `<p>Belum ada data.</p>`],
+	"bacaan_doa" : ["Bacaan Doa", `<p>Belum ada data.</p>`],
+	"tema" : ["Warna Tema", `<p>Belum ada data.</p>`]
+}
 
 
-
+// auto ganti logo / nama
+let gantiLogo = setInterval(function() {
+	tempatLogo.classList.contains("tampil-logo") ? tempatLogo.classList.remove("tampil-logo") : tempatLogo.classList.add("tampil-logo")
+}, 10000)
 // lihat perubahan rotasi
 window.addEventListener("orientationchange", function()
 {
@@ -105,67 +119,75 @@ fsBtn.addEventListener("click", function()
 	}
 })
 // navigasi
-navBtn.forEach(function(el)
-{
-	el.addEventListener("click", function()
-	{
-		window.navigator.vibrate(30)
-		// nonaktifkan semua navBtn
-		navBtn.forEach(function(el)
-		{
-			el.setAttribute("data-active", "false")
-		})
+document.querySelector("body").onhashchange = navigasi
+function navigasi() {
+	window.navigator.vibrate(30)
+	let target = location.hash.substr(1)
+	target = target.split("-")
 
-		// aktifkan navBtn yang diklik
-		this.setAttribute("data-active", "true")
+	switch(target[0]) {
+		case "l1":
+			let judul = target[1].toUpperCase()
+			navBtn.forEach(function(el)
+			{
+				el.setAttribute("data-active", "false")
+				if (el.innerText === judul) {
+					el.setAttribute("data-active", "true")
+				}
+			})
+			document.querySelector(".page__title > .title").innerText = judul
+			// console.log(el.innerText)
+			document.querySelectorAll("[class*='page-']:not(.page-head)").forEach(function(el)
+			{
+				el.setAttribute("data-visible", "false")
+				if (el.classList.contains(`page-${judul.toLowerCase()}`)) {
+					el.setAttribute("data-visible", "true")
+				}
+			})
+			ovlPages.setAttribute("data-visible", "false")
+			break;
+		case "l2":
+			sbBtn.forEach(function(el) {
+				el.setAttribute("data-active", "false")
+				// console.log(el.getAttribute("href").substr(4))
+				if (el.getAttribute("href").substr(4) === target[1]) {
+					el.setAttribute("data-active", "true")
+				}
+				switch(target[1]) {
+					case "home":
+						ovlPages.setAttribute("data-visible", "false")
+						break;
+					case "kumpulan_doa":
+						document.querySelector(".overlay-pages .card .card-body").innerHTML = l2KumpulanDoa
+						document.querySelector(".overlay-pages .card .title").innerText = "Kumpulan Doa"
+						ovlPages.setAttribute("data-visible", "true")
+						break;
+					case "pengaturan":
+						document.querySelector(".overlay-pages .card .card-body").innerHTML = l2Pengaturan
+						document.querySelector(".overlay-pages .card .title").innerText = "Pengaturan"
+						ovlPages.setAttribute("data-visible", "true")
+						break;
+				}
+			})
+			historyL2 = document.querySelector(".overlay-pages .card .title").innerText
+			document.querySelector(".overlay-pages .card-title a").style = "display : none"
+			ovlBlock.setAttribute("data-visible", "false")
+			ovlSidebar.setAttribute("data-visible", "false")
+			break;
+		case "l3":
+			document.querySelector(".overlay-pages .card .card-body").innerHTML = isiL3[target[1]][1]
+			document.querySelector(".overlay-pages .card .title").innerText = isiL3[target[1]][0]
+			document.querySelector(".overlay-pages .card-title a").innerHTML = `<span><</span>${historyL2}`
+			document.querySelector(".overlay-pages .card-title a").style = "display : inline-block"
+			ovlPages.setAttribute("data-visible", "true")
+			break;
+	}
+	// console.log(target)
+}
 
-		// ganti page__title sesuai navBtn yang diklik
-		document.querySelector(".page__title > .title").innerText = toKapital(this.innerText)
-
-		// ganti page yang tampil
-		document.querySelectorAll("[class*='page-']:not(.page-head)").forEach(function(el)
-		{
-			el.setAttribute("data-visible", "false")
-		})
-
-		document.querySelector("." + el.getAttribute("data-goto")).setAttribute("data-visible", "true")
-
-	})
-})
-
-// navigasi dari sidebar
-sbBtn.forEach(function(el) {
-	el.addEventListener("click", function(e) {
-		window.navigator.vibrate(30)
-		// console.log(e)
-		sbBtn.forEach(function(el) {
-			el.setAttribute("data-active", "false")
-		})
-		el.setAttribute("data-active", "true")
-			// console.log(e.target.innerText)
-
-		switch(e.target.innerText) {
-			case "Home":
-				ovlPages.setAttribute("data-visible", "false")
-				break;
-			case "Kumpulan Doa":
-				document.querySelector(".overlay-pages .card .card-body").innerHTML = l2KumpulanDoa
-				document.querySelector(".overlay-pages .card .title").innerText = e.target.innerText
-				ovlPages.setAttribute("data-visible", "true")
-				break;
-			case "Pengaturan":
-				document.querySelector(".overlay-pages .card .card-body").innerHTML = l2Pengaturan
-				document.querySelector(".overlay-pages .card .title").innerText = e.target.innerText
-				ovlPages.setAttribute("data-visible", "true")
-				break;
-		}
-		if (e.target.innerText === "Home") {
-		} else {
-			// console.log(e.target.innerText)
-		}
-		ovlBlock.setAttribute("data-visible", "false")
-		ovlSidebar.setAttribute("data-visible", "false")
-	})
+// back button
+document.querySelector(".overlay-pages .card-title a").addEventListener("click", function(e) {
+	history.back()
 })
 
 document.querySelector(".wrap").addEventListener("scroll", function(e)
