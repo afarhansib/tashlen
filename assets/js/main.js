@@ -15,8 +15,6 @@ if ("serviceWorker" in navigator) {
 } else {
 }
 
-
-
 // variables
 const ovlRotScr = document.querySelector(".overlay-rotate-screen")
 const navBtn = document.querySelectorAll(".navbar-btn")
@@ -29,6 +27,82 @@ const ovl = document.querySelectorAll("[class*='overlay']")
 const sbBtn = document.querySelectorAll(".sb-button")
 const tempatLogo = document.querySelector(".header__title .title > span")
 let historyL2 = ""
+let starterData = {
+	"bacaanWirid" : `
+							أَسْتَغْفِرُ اللهَ العَظِيْمَ اَلَّذِي لآ إِلَهَ إِلَّا هُوَ اْلحَيُّ اْلقَيُّوْمُ وَأَتُوْبُ إِلَيْهِ  
+							#3x$
+								لاَ إِلَهَ إِلَّا اللهُ وَحْدَهُ لاَ شَرِيْكَ لَهُ، لَهُ اْلمُلْكُ وَلَهُ اْلحَمْدُ يُحْيِي وَيُمِيْتُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيْرٌ
+							#1x`,
+	"jumlahWirid" : [33, 33, 33, 99],
+	"bacaanDoa" : `اَلْحَمْدُ للهِ رَبِّ الْعَالَمِيْنَ. حَمْدًا يُوَافِىْ نِعَمَهُ وَيُكَافِئُ مَزِيْدَهُ. يَارَبَّنَالَكَ الْحَمْدُ وَلَكَ الشُّكْرُ كَمَا يَنْبَغِىْ لِجَلاَلِ وَجْهِكَ وَعَظِيْمِ سُلْطَانِكَ
+	$اَللهُمَّ صَلِّ وَسَلِّمْ عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلى آلِ سَيِّدِنَا مُحَمَّدٍ. صَلاَةً تُنْجِيْنَابِهَا مِنْ جَمِيْعِ اْلاَهْوَالِ وَاْلآفَاتِ. وَتَقْضِىْ لَنَابِهَا جَمِيْعَ الْحَاجَاتِ.وَتُطَهِّرُنَا بِهَا مِنْ جَمِيْعِ السَّيِّئَاتِ. وَتَرْفَعُنَابِهَا عِنْدَكَ اَعْلَى الدَّرَجَاتِ. وَتُبَلِّغُنَا بِهَا اَقْصَى الْغَيَاتِ مِنْ جَمِيْعِ الْخَيْرَاتِ فِى الْحَيَاةِ وَبَعْدَ الْمَمَاتِ اِنَّهُ سَمِيْعٌ قَرِيْبٌ مُجِيْبُ الدَّعَوَاتِ وَيَاقَاضِىَ الْحَاجَاتِ
+	$
+اَللهُمَّ اِنَّا نَسْئَلُكَ سَلاَمَةً فِى الدِّيْنِ وَالدُّنْيَا وَاْلآخِرَةِ وَعَافِيَةً فِى الْجَسَدِ وَصِحَّةً فِى الْبَدَنِ وَزِيَادَةً فِى الْعِلْمِ وَبَرَكَةً فِى الرِّزْقِ وَتَوْبَةً قَبْلَ الْمَوْتِ وَرَحْمَةً عِنْدَ الْمَوْتِ وَمَغْفِرَةً بَعْدَ الْمَوْتِ. اَللهُمَّ هَوِّنْ عَلَيْنَا فِىْ سَكَرَاتِ الْمَوْتِ وَالنَّجَاةَ مِنَ النَّارِ وَالْعَفْوَ عِنْدَ الْحِسَابِ. رَبَّنَا لاَتُزِغْ قُلُوْبَنَا بَعْدَ اِذْهَدَيْتَنَا وَهَبْ لَنَا مِنْ لَدُنْكَ رَحْمَةً اِنَّكَ اَنْتَ الْوَهَّابُ
+$
+اَللّٰهُمَّ اغْفِرْلِيْ وَلِوَالِدَيَّ وَارْحَمْهُمَاكَمَارَبَّيَانِيْ صَغِيْرَا
+$
+رَبَّنَا أَتِنَا فِى الدُّنْيَا حَسَنَةً وَفِي اْلأَخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ
+$
+وَصَلَّى اللهُ عَلى سَيِّدِنَا مُحَمَّدٍ وَعَلى آلِهِ وَصَحْبِهِ وَسَلَّمَ وَالْحَمْدُ للهِ رَبِّ الْعَالَمِيْنَ
+	`
+}
+
+// local storage
+if(window.localStorage) { 
+  if(localStorage.getItem("semuaKonten")) {
+    starterData = JSON.parse(localStorage["semuaKonten"])
+  } else {
+  	simpanData()
+  }
+} else {
+	toast("Browser tidak didukung, tidak bisa mengubah pengaturan.", 5000)
+}
+
+function simpanData() {
+	localStorage["semuaKonten"] = JSON.stringify(starterData)
+}
+
+function toast(pesan = "Ini Toast", dur = 3000) {
+	const toastEl = document.querySelector(".toast")
+	toastEl.innerText = pesan
+	toastEl.classList.add("toast-show")
+
+	setTimeout(function(){
+		toastEl.classList.remove("toast-show")
+	}, dur)
+}
+
+function refreshDOM() {
+	document.querySelectorAll("[class*=tbtn]").forEach(function(e, i) {
+		e.innerText = starterData["jumlahWirid"][i]
+	})
+	document.querySelectorAll("[name=jml-tasbih]").forEach(function(e, i) {
+		e.value = starterData["jumlahWirid"][i]
+	})
+	if (document.querySelector("[name=bacaan-wirid]")) document.querySelector("[name=bacaan-wirid]").value = starterData["bacaanWirid"]
+	if (document.querySelector("[name=bacaan-doa]")) document.querySelector("[name=bacaan-doa]").value = starterData["bacaanDoa"]
+
+	let wiridHTML = ``
+	let wiridArray2 = []
+	let wiridArray = starterData["bacaanWirid"].split("$")
+	wiridArray.forEach(function(e, i) {
+		wiridArray2 = e.split("#")
+		wiridHTML += `<p><x>${wiridArray2[1]}</x><ar>${wiridArray2[0]}</ar></p>`
+	})
+	// setTimeout(function(){console.log(wiridHTML)},2000)
+	document.querySelector(".tempat-bacaan-wirid").innerHTML = wiridHTML
+
+	let doaHTML = ``
+	let doaArray2 = []
+	let doaArray = starterData["bacaanDoa"].split("$")
+	doaArray.forEach(function(e, i) {
+		doaArray2 = e.split("#")
+		if (doaArray2[1] == undefined) doaArray2[1] = `&nbsp;&nbsp;`
+		doaHTML += `<p><x>${doaArray2[1]}</x><ar>${doaArray2[0]}</ar></p>`
+	})
+	// setTimeout(function(){console.log(doaHTML)},2000)
+	document.querySelector(".tempat-bacaan-doa").innerHTML = doaHTML
+}
 
 let l2KumpulanDoa = `
 <ul class="list">
@@ -39,20 +113,26 @@ let l2KumpulanDoa = `
 `
 let l2Pengaturan = `
 <ul class="list">
-							<li><a href="#l3-jumlah_tasbih">Jumlah Tasbih <span>></span></a></li>
 							<li><a href="#l3-bacaan_wirid">Bacaan Wirid <span>></span></a></li>
+							<li><a href="#l3-jumlah_tasbih">Jumlah Tasbih <span>></span></a></li>
 							<li><a href="#l3-bacaan_doa">Bacaan Doa <span>></span></a></li>
-							<li><a href="#l3-tema">Tema Warna <span>></span></a></li>
 						</ul>
 `
+							// <li><a href="#l3-tema">Tema Warna <span>></span></a></li>
 let isiL3 = {
 	"doa_tahajud" : ["Doa Setelah Sholat Tahajud", `<p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p><p>Belum ada data.</p>`],
 	"doa_witir" : ["Doa Setelah Sholat Witir", `<p>Belum ada data.</p>`],
 	"doa_dhuha" : ["Doa Setelah Sholat Dhuha", `<p>Belum ada data.</p>`],
-	"jumlah_tasbih" : ["Jumlah Tasbih", `<p>Belum ada data.</p>`],
-	"bacaan_wirid" : ["Bacaan Wirid", `<p>Belum ada data.</p>`],
-	"bacaan_doa" : ["Bacaan Doa", `<p>Belum ada data.</p>`],
-	"tema" : ["Warna Tema", `<p>Belum ada data.</p>`]
+	"jumlah_tasbih" : ["Jumlah Tasbih", `
+					<div class="input-group">
+						<input class="input-child" type="number" name="jml-tasbih">
+						<input class="input-child" type="number" name="jml-tasbih">
+						<input class="input-child" type="number" name="jml-tasbih">
+						<input class="input-child" type="number" name="jml-tasbih">
+					</div><a class="btn-full" id="setJmlTasbih">SIMPAN</a>`],
+	"bacaan_wirid" : ["Bacaan Wirid", `<textarea name="bacaan-wirid" type="text"></textarea><a class="btn-full" id="setBacWirid">SIMPAN</a>`],
+	"bacaan_doa" : ["Bacaan Doa", `<textarea name="bacaan-doa" type="text"></textarea><a class="btn-full" id="setBacDoa">SIMPAN</a>`],
+	// "tema" : ["Warna Tema", `<p>Belum ada data.</p>`]
 }
 
 
@@ -76,6 +156,8 @@ window.addEventListener("orientationchange", function()
 }, false)
 
 
+// render DOM
+refreshDOM()
 
 // fullscreen
 let fsState = false;
@@ -144,6 +226,7 @@ function navigasi() {
 					el.setAttribute("data-visible", "true")
 				}
 			})
+
 			ovlPages.setAttribute("data-visible", "false")
 			break;
 		case "l2":
@@ -182,6 +265,7 @@ function navigasi() {
 			ovlPages.setAttribute("data-visible", "true")
 			break;
 	}
+	refreshDOM()
 	// console.log(target)
 }
 
@@ -222,7 +306,28 @@ function toKapital(str)
 	return firstChar.toUpperCase() + restChar.toLowerCase()
 }
 
-
+// pengaturan
+// jumlah tasbih
+window.addEventListener("click", function(e) {
+	if (e.target.getAttribute("id") === "setJmlTasbih") {
+		document.querySelectorAll("input[name=jml-tasbih]").forEach(function(el, i) {
+			// console.log(el, i)
+			starterData["jumlahWirid"][i] = el.value
+		})
+		simpanData()
+		toast("Jumlah Tasbih diubah.")
+	}
+	if (e.target.getAttribute("id") === "setBacWirid") {
+		starterData["bacaanWirid"] = document.querySelector("[name=bacaan-wirid]").value
+		simpanData()
+		toast("Bacaan Wirid diubah.")
+	}
+	if (e.target.getAttribute("id") === "setBacDoa") {
+		starterData["bacaanDoa"] = document.querySelector("[name=bacaan-doa]").value
+		simpanData()
+		toast("Bacaan Doa diubah.")
+	}
+})
 
 
 /*
@@ -230,7 +335,7 @@ function toKapital(str)
 */
 const tombol = document.querySelector(".tl-big-btn")
 const nomor = document.querySelector(".tl-num")
-let urutanArray = [33, 7, 7, 13]
+let urutanArray = starterData["jumlahWirid"]
 let jumlahWirid = urutanArray[0]
 let urutanSekarang = 1
 
